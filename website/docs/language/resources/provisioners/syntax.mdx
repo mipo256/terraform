@@ -314,6 +314,13 @@ resource "aws_instance" "web" {
 }
 ```
 
+## Terraform state for provisioners
+
+Because provisioners are designed to run only once - during creation or deletion of the resource, and
+they can introduce potentially any changes they want to resource, terraform does not store any information
+about provisioners in its state. The nature of the changes and the way to update these changes is unknown
+to terraform, therefore, tracking it in the state does not make much sense.
+
 ## Failure Behavior
 
 By default, provisioners that fail will also cause the Terraform apply
